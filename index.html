@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WaveSecure Anticheat</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="WaveSecure home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 180 90" role="img">
+            <path class="wave-a" d="M13 44C28 6 61 7 80 28c12 13 25 16 43 6 15-8 32-12 48 6-25-8-43 0-62 16-27 22-61 25-87 3C18 56 15 51 13 44Z" />
+            <path class="wave-b" d="M15 60c33 24 66 23 100 3 25-15 45-17 63 12-31-13-51-5-73 9-31 19-70 15-90-24Z" />
+            <path class="wave-c" d="M26 29C39 9 56 3 75 8 54 12 42 26 39 42c-3 16 7 27 25 29-25 3-47-12-43-31 1-4 2-8 5-11Z" />
+          </svg>
+        </span>
+        <span>
+          <strong>WaveSecure</strong>
+          <small>Anticheat</small>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Hoofdnavigatie">
+        <a href="#pricing">Prijzen</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#integration">FiveM koppeling</a>
+        <a href="https://discord.gg/BSmzCttgNQ">Discord</a>
+      </nav>
+
+      <div class="header-actions">
+        <span class="account-pill" id="accountStatus">Niet ingelogd</span>
+        <button class="ghost-btn" id="logoutBtn" hidden>Uitloggen</button>
+        <button class="ghost-btn" id="loginBtn" data-open-auth="login">Inloggen</button>
+        <button class="primary-btn" data-scroll="#pricing">Koop key</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Nieuw anticheat platform door Rex.nl x Xyro.nl</p>
+          <h1>WaveSecure Anticheat</h1>
+          <p>
+            Bescherm je FiveM server met automatische licentiekoppeling, live monitoring,
+            moderatie-tools en directe downloads na aankoop.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn" data-scroll="#pricing">Bekijk pakketten</button>
+            <button class="ghost-btn" data-open-auth="register">Account maken</button>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Live dashboard preview">
+          <div class="panel-top">
+            <span class="status-dot"></span>
+            <span>Rijnstad Roleplay V1</span>
+            <strong>Online</strong>
+          </div>
+          <div class="mini-chart">
+            <span style="height: 28%"></span>
+            <span style="height: 54%"></span>
+            <span style="height: 42%"></span>
+            <span style="height: 77%"></span>
+            <span style="height: 64%"></span>
+            <span style="height: 88%"></span>
+            <span style="height: 69%"></span>
+          </div>
+          <div class="hero-stats">
+            <div><strong>2.11.20</strong><span>AC-versie</span></div>
+            <div><strong>0</strong><span>Bans vandaag</span></div>
+            <div><strong>128</strong><span>Checks/min</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="trust-band">
+        <span>Automatische server-link</span>
+        <span>Google en Discord login</span>
+        <span>E-mail met downloadlink</span>
+        <span>Blacklist bij delen</span>
+      </section>
+
+      <section class="pricing-section" id="pricing">
+        <div class="section-heading">
+          <p class="eyebrow">Licenties</p>
+          <h2>Kies je WaveSecure key</h2>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <span class="plan-tag">Maand</span>
+            <h3>Monthly Key</h3>
+            <p>Ideaal om WaveSecure te testen op je live server.</p>
+            <strong class="price">€12,50</strong>
+            <button class="buy-btn" data-plan="Maand" data-price="12.50">Kopen</button>
+          </article>
+          <article class="price-card featured">
+            <span class="plan-tag">Kwartaal</span>
+            <h3>Kwartaal Key</h3>
+            <p>Drie maanden bescherming inclusief dashboard toegang.</p>
+            <strong class="price">€25</strong>
+            <button class="buy-btn" data-plan="Kwartaal" data-price="25">Kopen</button>
+          </article>
+          <article class="price-card featured">
+            <span class="plan-tag">Populairste</span>
+            <h3>Lifetime Key</h3>
+            <p>Eenmalig betalen en levenslang toegang tot updates.</p>
+            <strong class="price">€45</strong>
+            <button class="buy-btn" data-plan="Lifetime" data-price="45">Kopen</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="checkout-section" id="checkout">
+        <div class="checkout-card">
+          <div>
+            <p class="eyebrow">Checkout</p>
+            <h2 id="selectedPlan">Selecteer een pakket</h2>
+            <p>
+              Log in, voeg eventueel een Discord-kortingscode toe, en maak daarna direct
+              een echte licentie aan in je WaveSecure account.
+            </p>
+          </div>
+          <div class="checkout-box">
+            <label for="couponInput">Kortingscode</label>
+            <div class="inline-form">
+              <input id="couponInput" type="text" placeholder="Bijv. WAVE10" />
+              <button id="applyCoupon">Toepassen</button>
+            </div>
+            <div class="totals">
+              <span>Subtotaal <strong id="subtotal">€0,00</strong></span>
+              <span>Korting <strong id="discount">€0,00</strong></span>
+              <span class="total">Totaal <strong id="total">€0,00</strong></span>
+            </div>
+            <button class="primary-btn full" id="completePurchase">Licentie kopen en activeren</button>
+          </div>
+        </div>
+
+        <div class="discord-command">
+          <div>
+          <p class="eyebrow">Admin korting</p>
+          <h3>Maak korting aan</h3>
+          </div>
+          <div class="command-row">
+            <code>/korting</code>
+            <input id="commandCode" value="WAVE10" aria-label="Kortingscode" />
+            <input id="commandAmount" value="10" type="number" min="1" aria-label="Bedrag in euro" />
+            <button id="createCoupon">Activeer</button>
+          </div>
+          <p id="couponStatus">Log in en gebruik dit als admin-command: /korting WAVE10 10.</p>
+        </div>
+      </section>
+
+      <section class="auth-section">
+        <div class="section-heading">
+          <p class="eyebrow">Account</p>
+          <h2>Inloggen, registreren en koppelen</h2>
+        </div>
+        <div class="auth-options">
+          <button data-open-auth="login" data-provider="Google">Google login</button>
+          <button data-open-auth="login" data-provider="Discord">Discord koppelen</button>
+          <button data-open-auth="register">Nieuw account maken</button>
+        </div>
+      </section>
+
+      <section class="dashboard-shell" id="dashboard">
+        <aside class="sidebar">
+          <div class="server-select">
+            <span class="server-icon"></span>
+            <strong>WaveSecure V1</strong>
+          </div>
+          <input class="search" type="search" placeholder="Zoeken..." />
+          <nav>
+            <a class="active">Dashboard</a>
+            <a>Analytics</a>
+            <a>Spelers</a>
+            <a>Monitoring</a>
+            <a>Opzoeken</a>
+            <a>Warns</a>
+            <a>Kicks</a>
+            <a>Bans</a>
+            <a>Console</a>
+            <a>Resources</a>
+            <a>Instellingen</a>
+          </nav>
+          <small>v1.0.0 · WaveSecure.nl</small>
+        </aside>
+
+        <div class="dashboard-main">
+          <div class="license-alert">
+            <strong>Ontwikkelaarslicentie</strong>
+            <span id="licenseNotice">Log in en koop een licentie om downloads, facturen en moderatie te gebruiken.</span>
+          </div>
+          <div class="dashboard-header">
+            <div>
+              <h2>Rijnstad Roleplay V1</h2>
+              <p>beste roleplay stad in Nederland</p>
+            </div>
+            <span class="badge" id="serverStatus">Niet gekoppeld</span>
+          </div>
+
+          <div class="license-grid">
+            <div><strong id="versionValue">-</strong><span>AC-versie</span></div>
+            <div><strong id="expiresValue">-</strong><span>Verloopt op</span></div>
+            <div><strong id="playerLimitValue">-</strong><span>Spelerslimiet</span></div>
+            <button id="downloadBtn">Download</button>
+            <button id="billingBtn">Facturering</button>
+          </div>
+
+          <div class="monitor-panel">
+            <div class="metric"><strong>0</strong><span>Gemiddeld aantal spelers</span></div>
+            <div class="metric"><strong>0</strong><span>Piek aantal spelers</span></div>
+            <div class="metric"><strong id="onlinePlayers">0/0</strong><span>Online spelers</span></div>
+          </div>
+
+          <div class="moderation-grid">
+            <article>
+              <strong>0</strong>
+              <span>Warns</span>
+            </article>
+            <article>
+              <strong>0</strong>
+              <span>Kicks</span>
+            </article>
+            <article>
+              <strong id="banCount">0</strong>
+              <span>Bans</span>
+            </article>
+            <div class="action-stack">
+              <button data-action="Verwijder voertuigen">Verwijder voertuigen</button>
+              <button data-action="Verwijder peds">Verwijder peds</button>
+              <button data-action="Verwijder objecten">Verwijder objecten</button>
+              <button data-action="Verstuur aankondiging">Verstuur aankondiging</button>
+            </div>
+          </div>
+
+          <form class="ban-form" id="banForm">
+            <label for="playerName">Speler bannen</label>
+            <input id="playerName" placeholder="Speler naam of identifier" required />
+            <input id="banReason" placeholder="Reden" required />
+            <button type="submit">Ban toevoegen</button>
+          </form>
+          <ul class="ban-list" id="banList"></ul>
+          <div class="activity-panel">
+            <div>
+              <h3>Laatste acties</h3>
+              <ul id="actionList"></ul>
+            </div>
+            <div>
+              <h3>Mail outbox</h3>
+              <ul id="mailList"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="integration" id="integration">
+        <div>
+          <p class="eyebrow">FiveM installatie</p>
+          <h2>Sleep het anticheat mapje in je server</h2>
+          <p>
+            Na aankoop ontvangt de klant direct een mail van WaveSecure.nl met een
+            downloadlink, licentie-informatie en waarschuwing dat delen leidt tot blacklist.
+            De resource koppelt zichzelf met de website via de license key.
+          </p>
+        </div>
+        <div class="email-preview">
+          <strong>Van: WaveSecure.nl</strong>
+          <span>Onderwerp: Je WaveSecure download staat klaar</span>
+          <p>Download: https://wavesecure.nl/download/client-key</p>
+          <p>Deel je bestanden of key niet. Delen leidt tot een permanente blacklist.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">
+        <span class="logo-mark small" aria-hidden="true">
+          <svg viewBox="0 0 180 90">
+            <path class="wave-a" d="M13 44C28 6 61 7 80 28c12 13 25 16 43 6 15-8 32-12 48 6-25-8-43 0-62 16-27 22-61 25-87 3C18 56 15 51 13 44Z" />
+            <path class="wave-b" d="M15 60c33 24 66 23 100 3 25-15 45-17 63 12-31-13-51-5-73 9-31 19-70 15-90-24Z" />
+            <path class="wave-c" d="M26 29C39 9 56 3 75 8 54 12 42 26 39 42c-3 16 7 27 25 29-25 3-47-12-43-31 1-4 2-8 5-11Z" />
+          </svg>
+        </span>
+        <span>WaveSecure Anticheat</span>
+      </div>
+      <a href="https://discord.gg/BSmzCttgNQ">Discord</a>
+      <span>Made by AstroNL</span>
+    </footer>
+
+    <dialog class="auth-modal" id="authModal">
+      <form method="dialog">
+        <button class="close-modal" aria-label="Sluiten">×</button>
+      </form>
+      <h2 id="authTitle">Inloggen</h2>
+      <p id="authText">Koppel je account om licenties, downloads en servers te beheren.</p>
+      <button class="provider google" data-provider-login="Google">Doorgaan met Google</button>
+      <button class="provider discord" data-provider-login="Discord">Doorgaan met Discord</button>
+      <label>
+        Naam
+        <input id="authName" type="text" placeholder="Je naam" />
+      </label>
+      <label>
+        E-mail
+        <input id="authEmail" type="email" placeholder="jij@example.com" />
+      </label>
+      <label>
+        Wachtwoord
+        <input id="authPassword" type="password" placeholder="Minimaal 6 tekens" />
+      </label>
+      <button class="primary-btn full" id="authSubmit">Doorgaan</button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
